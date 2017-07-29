@@ -1,0 +1,17 @@
+{% load i18n %}
+
+<form action="{% url "social:complete" backend=partial_backend_name %}" method="POST">
+    {% csrf_token %}
+    <h2>{% trans "E-mail" %}</h2>
+    <p>
+        {% blocktrans %}
+            You do not have an email address in your profile. Please, fill the form in order to register.
+        {% endblocktrans %}
+    </p>
+    <input type="hidden" name="partial_token" value="{{ partial_token }}">
+    <div class="form-group">
+        <label class="control-label" for="email">{% trans "Email address:" %}</label>
+        <input class="form-control" id="email" type="email" name="email" value="" autofocus />
+    </div>
+    <button type="submit" class="button_regist">{% trans "Register" %}</button>
+</form>
